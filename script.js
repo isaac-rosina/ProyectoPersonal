@@ -10,7 +10,7 @@ function irRandom() {
     const tematica = Math.random() < 0.5 ? 'libre' : 'palabras';
     const beat = BEATS[Math.floor(Math.random() * BEATS.length)];
     localStorage.setItem('freestyle_tiempo', tiempo);
-    localStorage.setItem('freestyle_tematica', tematica);
+    localStorage.setItem('freestyle_modo', tematica);
     localStorage.setItem('freestyle_beat', beat);
     location.href = 'contador.html';
 }
@@ -19,7 +19,7 @@ function irReto() {
     const tiempo = TIEMPOS[Math.floor(Math.random() * TIEMPOS.length)];
     const beat = BEATS[Math.floor(Math.random() * BEATS.length)];
     localStorage.setItem('freestyle_tiempo', tiempo);
-    localStorage.setItem('freestyle_tematica', 'palabras');
+    localStorage.setItem('freestyle_modo', 'palabras');
     localStorage.setItem('freestyle_beat', beat);
     location.href = 'contador.html';
 }
@@ -31,10 +31,10 @@ function irReto() {
 
 function preparado() {
     const tiempo = document.getElementById('tiempo').value;
-    const tematica = document.getElementById('tematica').value;
+    const tematica = document.getElementById('modo').value;
     const beat = document.getElementById('beat').value;
     localStorage.setItem('freestyle_tiempo', tiempo);
-    localStorage.setItem('freestyle_tematica', tematica);
+    localStorage.setItem('freestyle_modo', tematica);
     localStorage.setItem('freestyle_beat', beat);
 }
 
@@ -71,7 +71,7 @@ function tick() {
 
 // rotación de palabras random
 
-const tematica = localStorage.getItem('freestyle_tematica') || 'libre';
+const tematica = localStorage.getItem('freestyle_modo') || 'libre';
 
 let lastWord = '';
 function nextWord() {
@@ -81,8 +81,17 @@ function nextWord() {
     document.getElementById('wordDisplay').textContent = w;
 }
 
+let lastTermination = '';
+function nextTermination() {
+    let t;
+    do { t = TERMINATIONS[Math.floor(Math.random() * TERMINATIONS.length)]; } while (t === lastTermination);
+    lastTermination = t;
+    document.getElementById('wordDisplay').textContent = t;
+}
+
 function empezarRondaDespuesDeIntro() {
     setTimeout(() => {
+        document.querySelector('.preparado').classList.remove('oculto-btn')
         document.querySelector('.vinyl-wrap').classList.remove('oculto');
 
         if (tematica === 'easy-mode') {
@@ -94,6 +103,18 @@ function empezarRondaDespuesDeIntro() {
             document.querySelector('.word-box').classList.remove('oculto');
             nextWord();
             setInterval(nextWord, 5000);
+        }
+        else if (tematica === 'palabra-themat') {
+            document.querySelector('.word-box').classList.remove('oculto');
+            let y;
+            y = THEMATIC_WORDS[Math.floor(Math.random() * THEMATIC_WORDS.length)];
+            document.getElementById('wordDisplay').textContent = y;
+            setTimeout(y);
+        }
+        else if (tematica === 'terminacion') {
+            document.querySelector('.word-box').classList.remove('oculto');
+            nextTermination();
+            setInterval(nextTermination, 20000);
         }
 
         tick();

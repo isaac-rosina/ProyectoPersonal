@@ -183,10 +183,6 @@ option{
    PÁGINA 3 — Contador (círculo quieto + rectángulo, tonos opacos)
    ============================================ */
 
-.oculto{
-  display: none;
-}
-
 .beat-tag{
   font-size: 0.75rem;
   letter-spacing: 0.18em;
@@ -242,6 +238,14 @@ option{
   letter-spacing: 0.04em;
   color: #2b2f36;
 }
+
+.oculto{
+  display: none;
+}
+
+/* .oculto-btn{
+  display: block;
+} */
 
 /* ============================================
    PÁGINA 4 — ¡Tiempo! (título grande + botones de colores distintos)
