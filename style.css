@@ -215,6 +215,17 @@ option{
   line-height: 1;
 }
 
+@keyframes latido{
+  0%, 100%{ transform: scale(1); }
+  50%{ transform: scale(1.06); }
+}
+ 
+.circle.latiendo{
+  animation-name: latido;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 .word-box{
   width: 80%;
   background: var(--rect-fill);

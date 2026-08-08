@@ -91,7 +91,6 @@ function nextTermination() {
 
 function empezarRondaDespuesDeIntro() {
     setTimeout(() => {
-        document.querySelector('.preparado').classList.remove('oculto-btn')
         document.querySelector('.vinyl-wrap').classList.remove('oculto');
 
         if (tematica === 'easy-mode') {
@@ -153,3 +152,7 @@ function fadeOutAndStop(duracionMs) {
         }
     }, tiempoPorPaso);
 }
+
+// -----------------------------------------------------
+// final.html
+// -----------------------------------------------------

@@ -33,11 +33,11 @@ const THEMATIC_WORDS = [
 
 const BEAT_FILES = {
     'boom-bap': [
-        { src: 'Beats/Boom Bap Clasico/Beat 1 BBC.mp3', intro: 10 },
-        { src: 'Beats/Boom Bap Clasico/Beat 2 BBC.mp3', intro: 10 },
-        { src: 'Beats/Boom Bap Clasico/Beat 3 BBC.mp3', intro: 10 },
-        { src: 'Beats/Boom Bap Clasico/Beat 4 BBC.mp3', intro: 10 },
-        { src: 'Beats/Boom Bap Clasico/Beat 5 BBC.mp3', intro: 10 }
+        { src: 'Beats/Boom Bap Clasico/Beat 1 BBC.mp3', intro: 10, bpm: 90.73 },
+        { src: 'Beats/Boom Bap Clasico/Beat 2 BBC.mp3', intro: 10, bpm: 92.21 },
+        { src: 'Beats/Boom Bap Clasico/Beat 3 BBC.mp3', intro: 10, bpm: 92.21 },
+        { src: 'Beats/Boom Bap Clasico/Beat 4 BBC.mp3', intro: 10, bpm: 90.73 },
+        { src: 'Beats/Boom Bap Clasico/Beat 5 BBC.mp3', intro: 10, bpm: 92.21 }
     ],
     'drill': [
         { src: 'Beats/Drill/Beat 1 Drill.mp3', intro: 13 },
