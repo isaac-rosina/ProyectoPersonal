@@ -62,8 +62,17 @@ function tick() {
 
     if (remaining <= 0) {
         clearInterval(interval);
-        fadeOutAndStop(1000);
-        setTimeout(() => { location.href = 'final.html'; }, 1200);
+        document.querySelector('body').classList.add('finalizando')
+        document.querySelector('.vinyl-wrap').classList.add('finalizando')
+        document.querySelector('.vinyl-wrap').classList.remove('latiendo');
+
+        const TIEMPO_EXTRA_SEGUNDOS = 8;
+
+        setTimeout(() => {
+            fadeOutAndStop(4000);
+            setTimeout(() => { location.href = 'final.html'; }, 1200);
+        }, TIEMPO_EXTRA_SEGUNDOS * 1000);
+
         return;
     }
     remaining--;
@@ -92,6 +101,14 @@ function nextTermination() {
 function empezarRondaDespuesDeIntro() {
     setTimeout(() => {
         document.querySelector('.vinyl-wrap').classList.remove('oculto');
+
+        const circleEl = document.querySelector('.vinyl-wrap');
+        circleEl.classList.remove('oculto');
+
+        const bpm = beatElegido.bpm || 90;
+        const duracionLatido = 60 / bpm;
+        circleEl.style.animationDuration = duracionLatido + 's';
+        circleEl.classList.add('latiendo');
 
         if (tematica === 'easy-mode') {
             document.querySelector('.word-box').classList.remove('oculto');
@@ -139,7 +156,7 @@ audio.play().then(empezarRondaDespuesDeIntro).catch(() => {
 });
 
 function fadeOutAndStop(duracionMs) {
-    const pasos = 20;
+    const pasos = 30;
     const tiempoPorPaso = duracionMs / pasos;
     const bajarPorPaso = audio.volume / pasos;
     let contador = 0;

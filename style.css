@@ -45,6 +45,7 @@ body{
   gap: 1.6rem;
   padding: 2rem 1.2rem;
   text-align: center;
+  transition: background-color 0.4s ease;
 }
 
 h1{
@@ -220,10 +221,14 @@ option{
   50%{ transform: scale(1.06); }
 }
  
-.circle.latiendo{
+.vinyl-wrap.latiendo{
   animation-name: latido;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+body.finalizando{
+  background-color: #c43530;
 }
 
 .word-box{

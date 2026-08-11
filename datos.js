@@ -40,11 +40,11 @@ const BEAT_FILES = {
         { src: 'Beats/Boom Bap Clasico/Beat 5 BBC.mp3', intro: 10, bpm: 92.21 }
     ],
     'drill': [
-        { src: 'Beats/Drill/Beat 1 Drill.mp3', intro: 13 },
-        { src: 'Beats/Drill/Beat 2 Drill.mp3', intro: 26 },
-        { src: 'Beats/Drill/Beat 3 Drill.mp3', intro: 20 },
-        { src: 'Beats/Drill/Beat 4 Drill.mp3', intro: 14 },
-        { src: 'Beats/Drill/Beat 5 Drill.mp3', intro: 13 }
+        { src: 'Beats/Drill/Beat 1 Drill.mp3', intro: 13, bpm: 140.63 },
+        { src: 'Beats/Drill/Beat 2 Drill.mp3', intro: 26, bpm: 140.63 },
+        { src: 'Beats/Drill/Beat 3 Drill.mp3', intro: 20, bpm: 70.31 },
+        { src: 'Beats/Drill/Beat 4 Drill.mp3', intro: 14, bpm: 70.31 },
+        { src: 'Beats/Drill/Beat 5 Drill.mp3', intro: 13, bpm: 70.31 }
     ],
     'trap': [
         { src: 'Beats/Trap/Beat 1 Trap.mp3', intro: 13 },
