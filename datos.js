@@ -31,6 +31,13 @@ const THEMATIC_WORDS = [
     'MÚSICA', 'TECNOLOGÍA', 'GUERRA', 'PAZ', 'NATURALEZA', 'CIUDAD', 'SOLEDAD', 'FAMA', 'UNIVERSO', 'REVOLUCIÓN'
 ]
 
+const TITLE_INTRO = [
+        '¡PREPÁRATE!', 'ROMPE EL BEAT', '¡¡YA EMPIEZA!!', 'QUIERO ESCUCHAR ESA ENTRADA', 'DÁ LO MAXIMO',
+        'MOSTRÁ LO MEJOR DE VOS', 'MOSTRALES QUIEN MANDA', "ENTRÁ CON TODO", "QUE FLUYA", "SOLTÁ LAS BARRAS",
+        "DEJÁ TU MARCA", "SIN MIEDO", "CONFIÁ EN VOS", "QUE HABLEN TUS BARRAS", "ACTIVÁ EL FLOW", 
+        "SUBÍ LA ENERGÍA", "ENCENDÉ EL BEAT", "DALE SIN FILTRO", "SIN PENSAR DE MÁS", "HACÉ HISTORIA"
+];
+
 const BEAT_FILES = {
     'boom-bap': [
         { src: 'Beats/Boom Bap Clasico/Beat 1 BBC.mp3', intro: 10, bpm: 90.73 },
@@ -47,9 +54,9 @@ const BEAT_FILES = {
         { src: 'Beats/Drill/Beat 5 Drill.mp3', intro: 13, bpm: 70.31 }
     ],
     'trap': [
-        { src: 'Beats/Trap/Beat 1 Trap.mp3', intro: 13 },
-        { src: 'Beats/Trap/Beat 2 Trap.mp3', intro: 13 },
-        { src: 'Beats/Trap/Beat 3 Trap.mp3', intro: 13 },
+        { src: 'Beats/Trap/Beat 1 Trap.mp3', intro: 13, bpm: 99.38 },
+        { src: 'Beats/Trap/Beat 2 Trap.mp3', intro: 13, bpm: 143.55 },
+        { src: 'Beats/Trap/Beat 3 Trap.mp3', intro: 13, bpm: 143.55 },
         { src: 'Beats/Trap/Beat 4 Trap.mp3', intro: 26 },
         { src: 'Beats/Trap/Beat 5 Trap.mp3', intro: 26 }
     ],

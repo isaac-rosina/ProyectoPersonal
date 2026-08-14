@@ -3,31 +3,34 @@
 // -----------------------------------------------------
 
 const TIEMPOS = [1, 2, 3];
+const MODO = ['libre', 'easy-mode', 'hard-mode', 'palabra-themat', 'terminacion'];
 const BEATS = ['boom-bap', 'trap', 'drill', 'jazz-boom-bap', 'west-coast'];
 
 function irRandom() {
     const tiempo = TIEMPOS[Math.floor(Math.random() * TIEMPOS.length)];
-    const tematica = Math.random() < 0.5 ? 'libre' : 'palabras';
+    const tematica = MODO[Math.floor(Math.random() * MODO.length)];
     const beat = BEATS[Math.floor(Math.random() * BEATS.length)];
     localStorage.setItem('freestyle_tiempo', tiempo);
     localStorage.setItem('freestyle_modo', tematica);
     localStorage.setItem('freestyle_beat', beat);
+    localStorage.setItem('freestyle_challenge', 'random');
     location.href = 'contador.html';
 }
 
 function irReto() {
     const tiempo = TIEMPOS[Math.floor(Math.random() * TIEMPOS.length)];
+    const tematica = MODO[Math.floor(Math.random() * MODO.length)];
     const beat = BEATS[Math.floor(Math.random() * BEATS.length)];
     localStorage.setItem('freestyle_tiempo', tiempo);
-    localStorage.setItem('freestyle_modo', 'palabras');
+    localStorage.setItem('freestyle_modo', tematica);
     localStorage.setItem('freestyle_beat', beat);
+    localStorage.setItem('freestyle_challenge', 'reto');
     location.href = 'contador.html';
 }
 
 // -----------------------------------------------------
 // elegirEstilo.html
 // -----------------------------------------------------
-
 
 function preparado() {
     const tiempo = document.getElementById('tiempo').value;
@@ -36,11 +39,14 @@ function preparado() {
     localStorage.setItem('freestyle_tiempo', tiempo);
     localStorage.setItem('freestyle_modo', tematica);
     localStorage.setItem('freestyle_beat', beat);
+    localStorage.setItem('freestyle_challenge', 'manual');
 }
 
 // -----------------------------------------------------
 // contador.html
 // -----------------------------------------------------
+
+const challenge = localStorage.getItem('freestyle_challenge');
 
 const beatKey = localStorage.getItem('freestyle_beat') || 'boom-bap';
 document.getElementById('beatTag').textContent = 'BEAT: ' + (BEAT_NAMES[beatKey] || beatKey).toUpperCase();
@@ -57,14 +63,46 @@ function formatTime(s) {
     return String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
 }
 
+let lastTitle = '';
+function nextTitleIntro() {
+    let l;
+    do { l = TITLE_INTRO[Math.floor(Math.random() * TITLE_INTRO.length)]; } while (l === lastTitle);
+    lastTitle = l;
+    document.getElementById('titleIntro').textContent = l;    
+}
+
+if (challenge === 'manual') {
+    nextTitleIntro();
+    setInterval(nextTitleIntro, 2800);
+    document.getElementById('resumenIntro').classList.add('oculto');
+} else {
+    document.getElementById('titleIntro').classList.add('oculto');
+}
+
+const modoResumen = localStorage.getItem('freestyle_modo');
+const tiempoResumen = localStorage.getItem('freestyle_tiempo');
+const beatResumen = localStorage.getItem('freestyle_beat');
+
+document.getElementById('resumenBeat').textContent = beatResumen;
+document.getElementById('resumenTiempo').textContent = tiempoResumen + ' min';
+if (modoResumen === 'palabra-themat' ) {
+    document.getElementById('resumenModo').textContent = 'temática';
+} else if (modoResumen === 'terminacion' ) {
+    document.getElementById('resumenModo').textContent = 'terminación';
+} else {
+    document.getElementById('resumenModo').textContent = modoResumen;
+}
+
 function tick() {
     timeNum.textContent = formatTime(remaining);
+    document.querySelector('#titleIntro').classList.add('oculto');
 
     if (remaining <= 0) {
         clearInterval(interval);
-        document.querySelector('body').classList.add('finalizando')
-        document.querySelector('.vinyl-wrap').classList.add('finalizando')
+        document.querySelector('body').classList.add('finalizando');
+        document.querySelector('.vinyl-wrap').classList.add('finalizando');
         document.querySelector('.vinyl-wrap').classList.remove('latiendo');
+        document.querySelector('.word-box').classList.add('oculto');
 
         const TIEMPO_EXTRA_SEGUNDOS = 8;
 
@@ -101,6 +139,8 @@ function nextTermination() {
 function empezarRondaDespuesDeIntro() {
     setTimeout(() => {
         document.querySelector('.vinyl-wrap').classList.remove('oculto');
+        document.querySelector('.beat-tag').classList.remove('oculto');
+        document.getElementById('resumenIntro').classList.add('oculto');
 
         const circleEl = document.querySelector('.vinyl-wrap');
         circleEl.classList.remove('oculto');
@@ -173,3 +213,7 @@ function fadeOutAndStop(duracionMs) {
 // -----------------------------------------------------
 // final.html
 // -----------------------------------------------------
+
+if (challenge === 'random' || challenge === 'reto') {
+    document.getElementById('otro').classList.add('oculto');
+}
