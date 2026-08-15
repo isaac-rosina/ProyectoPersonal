@@ -2,14 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitcount+Prop+Single:wght@100..900&family=Black+Ops+One&family=Bungee&display=swap');
 
 :root {
-  --bg: #2b2f36;
+  --bg: #151f35;
   /* gris azulado oscuro, tranquilo */
-  --bg-soft: #343941;
-  --bg-dark: #181a1f;
+  --bg-soft: #17274b;
+  --bg-dark: #06173b;
   /* variante un poco más clara para paneles */
   --text: #eef1f3;
   /* blanco suave */
-  --muted: #a3aab2;
+  --muted: #6e93e2;
   /* gris claro para textos secundarios */
 
   /* colores de los 3 bloques del inicio (y reutilizados en botones finales) */
@@ -18,7 +18,7 @@
   --c-violet: #d9534f;
 
   /* página elegir estilo */
-  --select-accent: #999387;
+  --select-accent: #7b8396;
   /* ámbar, para los desplegables */
   --btn-preparado: #d9534f;
   /* rojo/coral, distinto a los desplegables */
@@ -26,10 +26,10 @@
   /* página contador: colores opacos, sin blanco puro */
   --circle-fill: #cfd6da;
   /* gris muy claro, opaco, no molesta la vista */
-  --circle-border: #565c64;
+  --circle-border: #2d416d;
   /* se diferencia del fondo */
   --rect-fill: #cfd6da;
-  --rect-border: #565c64;
+  --rect-border: #2d416d;
 
   /* página tiempo (última) */
   --title-glow: #f2c94c;
@@ -68,7 +68,7 @@ body {
 h1 {
   font-family: "Black Ops One", system-ui;
   letter-spacing: 0.06em;
-  font-size: clamp(2.4rem, 13vw, 3.4rem);
+  font-size: clamp(2rem, 9vw, 3rem);
   margin: 0;
 }
 
@@ -79,6 +79,23 @@ button {
 /* ============================================
    PÁGINA 1 — Bienvenido (tres bloques de color)
    ============================================ */
+
+img{
+  width: 80%;
+  max-width: 100px;
+  height: auto;
+}
+
+.textIntro {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 0 auto;
+  width: 85%;
+}
 
 .stack {
   display: flex;
@@ -130,6 +147,19 @@ button {
    PÁGINA 2 — Elige tu estilo (desplegables + botón)
    ============================================ */
 
+.resumen-elegido{
+  font-family: "Black Ops One", system-ui;
+  letter-spacing: 0.06em;
+  font-size:xx-large;
+  margin: 0;
+}
+
+hr{
+  width: 80%;
+  border: 1px solid var(--circle-border);
+  margin-top: -0.5rem;
+}
+
 .columns {
   display: flex;
   flex-direction: column;
@@ -140,6 +170,7 @@ button {
 
 .column {
   background: var(--bg-soft);
+  border: 2px solid var(--circle-border);
   border-radius: 10px;
   padding: 1rem;
   width: 80%;
@@ -389,7 +420,7 @@ body:has(.btn-row) h1 {
 }
 
 #otro {
-  background: var(--c-violet);
+  background: var(--c-coral);
 }
 
 #salir {
