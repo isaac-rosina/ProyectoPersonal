@@ -13,14 +13,14 @@
   /* gris claro para textos secundarios */
 
   /* colores de los 3 bloques del inicio (y reutilizados en botones finales) */
-  --c-teal: #318d85;
-  --c-coral: #836bb3;
-  --c-violet: #d9534f;
+  --c-teal: #1e9e3e;
+  --c-coral: #9752c5;
+  --c-violet: #ee2828;
 
   /* página elegir estilo */
   --select-accent: #7b8396;
   /* ámbar, para los desplegables */
-  --btn-preparado: #d9534f;
+  --btn-preparado: #ee2851;
   /* rojo/coral, distinto a los desplegables */
 
   /* página contador: colores opacos, sin blanco puro */
@@ -34,7 +34,7 @@
   /* página tiempo (última) */
   --title-glow: #f2c94c;
   /* amarillo dorado, sobresale sobre el fondo oscuro */
-  --c-salir: #fa871c;
+  --c-salir: #ff8a1c;
 }
 
 * {
@@ -191,7 +191,7 @@ select {
   -webkit-appearance: none;
   width: 100%;
   background: var(--select-accent);
-  color: #2b2f36;
+  color: #23252b;
   border: none;
   border-radius: 8px;
   padding: 0.75rem 0.9rem;
@@ -340,7 +340,7 @@ option {
 }
 
 body.finalizando {
-  background-color: #c43530;
+  background-color: #ee2851;
 }
 
 .word-box {
@@ -367,24 +367,38 @@ body.finalizando {
   color: #2b2f36;
 }
 
+.startIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--title-glow);
+  padding: 1rem;
+}
+
+#titleStart{
+  font-family: "Black Ops One", system-ui;
+  letter-spacing: 0.06em;
+  font-size: clamp(2rem, 9vw, 3rem);
+  margin-bottom: 0;
+}
+
+.secondStart {
+  font-family: "Black Ops One", system-ui;
+  font-size: clamp(2rem, 9vw, 3rem);
+  margin: 0;
+}
+
 #titleIntro {
   font-family: "Black Ops One", system-ui;
   letter-spacing: 0.06em;
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-size: clamp(1rem, 6vw, 2rem);
   margin: 1.5rem;
-}
-
-#titleIntro.oculto {
-  display: none;
 }
 
 .oculto {
   display: none;
 }
-
-/* .oculto-btn{
-  display: block;
-} */
 
 /* ============================================
    PÁGINA 4 — ¡Tiempo! (título grande + botones de colores distintos)
@@ -428,11 +442,11 @@ body:has(.btn-row) h1 {
 }
 
 #repetir {
-  background: var(--c-teal);
+  background: #318d85;
 }
 
 #otro {
-  background: var(--c-coral);
+  background: #836bb3;
 }
 
 #salir {
