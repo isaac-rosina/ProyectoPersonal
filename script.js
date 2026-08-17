@@ -68,7 +68,7 @@ function nextTitleIntro() {
     let l;
     do { l = TITLE_INTRO[Math.floor(Math.random() * TITLE_INTRO.length)]; } while (l === lastTitle);
     lastTitle = l;
-    document.getElementById('titleIntro').textContent = l;    
+    document.getElementById('titleIntro').textContent = l;
 }
 
 if (challenge === 'manual') {
@@ -85,9 +85,9 @@ const beatResumen = localStorage.getItem('freestyle_beat');
 
 document.getElementById('resumenBeat').textContent = beatResumen;
 document.getElementById('resumenTiempo').textContent = tiempoResumen + ' min';
-if (modoResumen === 'palabra-themat' ) {
+if (modoResumen === 'palabra-themat') {
     document.getElementById('resumenModo').textContent = 'temática';
-} else if (modoResumen === 'terminacion' ) {
+} else if (modoResumen === 'terminacion') {
     document.getElementById('resumenModo').textContent = 'terminación';
 } else {
     document.getElementById('resumenModo').textContent = modoResumen;
@@ -96,6 +96,11 @@ if (modoResumen === 'palabra-themat' ) {
 function tick() {
     timeNum.textContent = formatTime(remaining);
     document.querySelector('#titleIntro').classList.add('oculto');
+
+    if (remaining <= 3 && remaining > 0) {
+        tickSound.currentTime = 0;
+        tickSound.play().catch(() => { });
+    }
 
     if (remaining <= 0) {
         clearInterval(interval);
@@ -147,7 +152,7 @@ function empezarRondaDespuesDeIntro() {
 
         const bpm = beatElegido.bpm || 90;
         const duracionLatido = 60 / bpm;
-        circleEl.style.animationDuration = duracionLatido + 's';
+        circleEl.style.setProperty('--duracion-latido', duracionLatido + 's');
         circleEl.classList.add('latiendo');
 
         if (tematica === 'easy-mode') {
@@ -162,6 +167,7 @@ function empezarRondaDespuesDeIntro() {
         }
         else if (tematica === 'palabra-themat') {
             document.querySelector('.word-box').classList.remove('oculto');
+            document.querySelector('.kicker').textContent = 'Temática';
             let y;
             y = THEMATIC_WORDS[Math.floor(Math.random() * THEMATIC_WORDS.length)];
             document.getElementById('wordDisplay').textContent = y;
@@ -169,6 +175,7 @@ function empezarRondaDespuesDeIntro() {
         }
         else if (tematica === 'terminacion') {
             document.querySelector('.word-box').classList.remove('oculto');
+            document.querySelector('.kicker').textContent = 'Terminación';
             nextTermination();
             setInterval(nextTermination, 20000);
         }
@@ -182,7 +189,17 @@ function empezarRondaDespuesDeIntro() {
 // sonar el beat de fondo
 
 const opcionesDeEsteEstilo = BEAT_FILES[beatKey] || BEAT_FILES['boom-bap'];
-const beatElegido = opcionesDeEsteEstilo[Math.floor(Math.random() * opcionesDeEsteEstilo.length)];
+
+const repetirMismoBeat = localStorage.getItem('freestyle_repetir') === 'true';
+let beatElegido;
+
+if (repetirMismoBeat && localStorage.getItem('freestyle_beat_elegido')) {
+    beatElegido = JSON.parse(localStorage.getItem('freestyle_beat_elegido'));
+} else {
+    beatElegido = opcionesDeEsteEstilo[Math.floor(Math.random() * opcionesDeEsteEstilo.length)];
+}
+
+localStorage.setItem('freestyle_beat_elegido', JSON.stringify(beatElegido));
 
 const audio = new Audio(beatElegido.src);
 audio.loop = true;
@@ -194,6 +211,9 @@ audio.play().then(empezarRondaDespuesDeIntro).catch(() => {
         empezarRondaDespuesDeIntro();
     }, { once: true });
 });
+
+const tickSound = new Audio("Sounds/tickSound.MP3");
+tickSound.volume = 2;
 
 function fadeOutAndStop(duracionMs) {
     const pasos = 30;
@@ -216,4 +236,19 @@ function fadeOutAndStop(duracionMs) {
 
 if (challenge === 'random' || challenge === 'reto') {
     document.getElementById('otro').classList.add('oculto');
+}
+
+function repetirBeat() {
+    localStorage.setItem('freestyle_repetir', 'true');
+    location.href = 'contador.html';
+}
+
+function salir() {
+    localStorage.setItem('freestyle_repetir', 'false');
+    location.href = 'index.html';
+}
+
+function elegirOtro() {
+    localStorage.setItem('freestyle_repetir', 'false');
+    location.href = 'elegirEstilo.html';
 }

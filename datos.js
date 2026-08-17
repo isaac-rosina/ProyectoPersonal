@@ -57,11 +57,11 @@ const BEAT_FILES = {
         { src: 'Beats/Trap/Beat 1 Trap.mp3', intro: 13, bpm: 99.38 },
         { src: 'Beats/Trap/Beat 2 Trap.mp3', intro: 13, bpm: 143.55 },
         { src: 'Beats/Trap/Beat 3 Trap.mp3', intro: 13, bpm: 143.55 },
-        { src: 'Beats/Trap/Beat 4 Trap.mp3', intro: 26 },
-        { src: 'Beats/Trap/Beat 5 Trap.mp3', intro: 26 }
+        { src: 'Beats/Trap/Beat 4 Trap.mp3', intro: 26, bpm: 96.98 },
+        { src: 'Beats/Trap/Beat 5 Trap.mp3', intro: 26, bpm: 96.98 }
     ],
     'jazz-boom-bap': [
-        { src: 'Beats/Jazz Boom Bap/Beat 1 JBB.mp3', intro: 22 },
+        { src: 'Beats/Jazz Boom Bap/Beat 1 JBB.mp3', intro: 22, bpm: 87.89 },
         { src: 'Beats/Jazz Boom Bap/Beat 2 JBB.mp3', intro: 22 },
         { src: 'Beats/Jazz Boom Bap/Beat 3 JBB.mp3', intro: 22 },
         { src: 'Beats/Jazz Boom Bap/Beat 4 JBB.mp3', intro: 22 },
