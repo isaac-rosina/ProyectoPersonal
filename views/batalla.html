@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freestyle Cypher — Elige tu estilo</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+    <h1>Elige como batallar</h1>
+
+    <div class="column">
+        <label class="column-title" for="modo">Modo</label>
+        <select id="modo">
+            <option value="libre">Libre</option>
+            <option value="4x4">4 x 4</option>
+            <option value="8x8">8 x 8</option>
+            <option value="easy-mode">Easy Mode (Palabra cada 10 segundos)</option>
+            <option value="hard-mode">Hard Mode (Palabra cada 5 segundos)</option>
+            <option value="palabra-themat">Tematica</option>
+            <option value="terminacion">Terminaciones</option>
+        </select>
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <label class="column-title" for="tiempo">Tiempo</label>
+            <select id="tiempo">
+                <option value="1">1 min. cada uno</option>
+                <option value="2">2 min. cada uno</option>
+                <option value="3">3 min. cada uno</option>
+            </select>
+        </div>
+
+        <div class="column">
+            <label class="column-title" for="beat">Beat</label>
+            <select id="beat">
+                <option value="boom-bap">Boom Bap Clásico</option>
+                <option value="trap">Trap</option>
+                <option value="drill">Drill</option>
+                <option value="jazz-boom-bap">Jazz Boom Bap</option>
+                <option value="west-coast">West Coast</option>
+            </select>
+        </div>
+    </div>
+
+    <button class="preparado" onclick="location.href='contador.html'; preparado()">Preparado</button>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

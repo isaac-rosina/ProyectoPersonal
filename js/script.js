@@ -127,6 +127,43 @@ function tick() {
         tickSound.play().catch(() => { });
     }
 
+    // if (remaining <= 0 && (tematica == "4x4" || tematica == "8x8")) {
+    //     clearInterval(interval);
+    //     document.querySelector('body').classList.add('finalizando');
+    //     document.querySelector('.vinyl-wrap').classList.add('finalizando');
+    //     document.querySelector('.vinyl-wrap').classList.remove('latiendo');
+    //     document.querySelector('.word-box').classList.add('oculto');
+
+    //     const preCuentaNum = document.querySelector('.secondStart');
+
+    // let n = 3;
+    // preCuentaNum.textContent = n;
+
+    // doubleTickSound.currentTime = 0;
+    // doubleTickSound.play().catch(() => { });
+
+    // const preCuentaInterval = setInterval(() => {
+    //     n--;
+    //     if (n > 0) {
+    //         preCuentaNum.textContent = n;
+    //         doubleTickSound.currentTime = 0;
+    //         doubleTickSound.play().catch(() => { });
+    //     } else {
+    //         clearInterval(preCuentaInterval);
+    //         alTerminar();
+    //     }
+    // }, 1000);
+
+    //     // const TIEMPO_EXTRA_SEGUNDOS = 8;
+
+    //     // setTimeout(() => {
+    //     //     fadeOutAndStop(4000);
+    //     //     setTimeout(() => { location.href = 'final.html'; }, 1200);
+    //     // }, TIEMPO_EXTRA_SEGUNDOS * 1000);
+
+    //     return;
+    // }
+    
     if (remaining <= 0) {
         clearInterval(interval);
         document.querySelector('body').classList.add('finalizando');
